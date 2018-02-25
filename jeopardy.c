@@ -20,7 +20,7 @@
 // Put global environment variables here
 
 // Processes the answer from the user containing what is or who is and tokenizes it to retrieve the answer.
-void tokenize(char *input);
+void tokenize(char *input)
 {
 	char *firstWord, *secondWord, *answer, *context;
 
@@ -78,9 +78,11 @@ int main(int argc, char *argv[])
     while (game_state)
     {
         // EXAMPLE: This line gets a line of input from the user
-        fgets(buffer, BUFFER_LEN, stdin);
-        printf("[before]%s[after]", buffer);
-
+	fgets(buffer, BUFFER_LEN,stdin);
+	display_categories();
+	
+	
+	
         // Call functions from the questions and players source files
 
         // Execute the game until all questions are answered
