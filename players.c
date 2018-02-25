@@ -20,7 +20,8 @@ bool player_exists(struct player *players, int num_players, char *name)
 {
     for (int i = 0; i < num_players; i ++)
     {
-        if (players[i].name == name)
+        bool validP = strcmp(players[i].name, name);
+        if (validP == true)
         {
             return true;
         }
@@ -36,7 +37,8 @@ void update_score(struct player *players, int num_players, char *name, int score
 
     for (int i = 0; i < num_players; i ++)
     {
-        if (players[i].name == name)
+        bool validP = strcmp(players[i].name, name);
+        if (validP == true)
         {
             players[i].score = score;
         }
