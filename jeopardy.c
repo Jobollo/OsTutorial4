@@ -20,7 +20,27 @@
 // Put global environment variables here
 
 // Processes the answer from the user containing what is or who is and tokenizes it to retrieve the answer.
-void tokenize(char *input, char **tokens);
+void tokenize(char *input);
+{
+	char *firstWord, *secondWord, *answer, *context;
+
+	int inputLength = strlen(input);
+	char *inputCopy = (char*) calloc(inputLength + 1, sizeof(char));
+	strncpy(inputCopy, input, inputLength);
+
+	firstWord = strtok_r (inputCopy, " ", &context);
+	secondWord = strtok_r (NULL, " ", &context);
+	answer = context;
+
+	if (strcmp(firstWord, "what") == 0 || strcmp(firstWord, "who") == 0)
+	{
+	     if (strcmp(secondWord, "is") == 0)
+	     {
+		input = answer;
+	     }
+	}
+	free(inputCopy);
+}
 
 // Displays the game results for each player, their name and final score, ranked from first to last place
 void show_results(struct player *players, int num_players);
