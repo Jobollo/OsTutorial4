@@ -79,12 +79,7 @@ void run_game(char **token, player *players){
             else{
                 display_question(category, value);
                 scanf("%s %s %s", dummy1, dummy2, real);                                  //Takes response
-                printf("%s\n", response);
-                //strcpy(dummy1, strtok(response, " ")); // first string
-                //strcpy(dummy2, strtok(NULL, " ")); // second string
-                //strcpy(real, strtok(NULL, " "));
-                //tokenize(response, token);                               //extracts answer from response
-                //printf(token[2]);
+                //printf("%s\n", response);
                 correct = valid_answer(category,value, &real);
                 if(correct){
                     printf("Correct! You may now choose another question.\n\n");
