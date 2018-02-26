@@ -1,7 +1,7 @@
 /*
- * Tutorial 4 Jeopardy Project for SOFE 3950U / CSCI 3020U: Operating Systems
+ * Tutorial 4 Jeopardy Project for SOFE 3950U Operating Systems
  *
- * Copyright (C) 2015, <GROUP MEMBERS>
+ * Copyright (C) 2018, <GROUP MEMBERS>
  * All rights reserved.
  *
  */
@@ -14,80 +14,85 @@
 // Initializes the array of questions for the game
 void initialize_game(void)
 {
-    // initialize each question struct and assign it to the questions array
-    question question1 = 
-    {
-        .category = (uintptr_t)categories[0], .question = "T/F: Java is the same as Javascript.", .answer = "F", .value = 100, .answered = false
-    };
-    questions[0] = question1;
-
-    question question2 = 
-    {
-        .category = (uintptr_t)categories[0], .question = "T/F: The | Operator is used to pipe input/output.", .answer = "F", .value = 200, .answered = false
-    };
-    questions[1] = question2;
-
-    question question3 = 
-    {
-        .category = (uintptr_t)categories[0], .question = "T/F: STR R2, R3 will store contents of R3 into R2.", .answer = "F", .value = 300, .answered = false
-    };
-    questions[2] = question3;
-
-    question question4 = 
-    {
-        .category = (uintptr_t)categories[0], .question = "T/F: The PC in each thread is different.", .answer = "T", .value = 400, .answered = false
-    };
-    questions[3] = question4;
-
-    question question5 = 
-    {
-        .category = (uintptr_t)categories[1], .question = "T/F: A binary search runs in O(logn).", .answer = "T", .value = 100, .answered = false
-    };
-    questions[4] = question5;
-
-    question question6 = 
-    {
-        .category = (uintptr_t)categories[2], .question = "T/F: A worst case scenario for algorithms are lower bounds.", .answer = "F", .value = 200, .answered = false
-    };
-    questions[5] = question6;
-
-    question question7 = 
-    {
-        .category = (uintptr_t)categories[1], .question = "T/F: A DFS algorithm will always find the path to a goal node.", .answer = "F", .value = 300, .answered = false
-    };
-    questions[6] = question7;
-
-    question question8 = 
-    {
-        .category = (uintptr_t)categories[1], .question = "T/F: An A* search algorithm uses heuristics and best first search together.", .answer = "T", .value = 400, .answered = false
-    };
-    questions[7] = question8;
-
-    question question9 = 
-    {
-        .category = (uintptr_t)categories[2], .question = "T/F: You only need one semi-colon in a SQL statement.", .answer = "T", .value = 100, .answered = false
-    };
-    questions[8] = question9;
-
-    question question10 = 
-    {
-        .category = (uintptr_t)categories[2], .question = "T/F: A Foreign Key doesn't not need to be a Primary Key in another table.", .answer = "F", .value = 200, .answered = false
-    };
-    questions[9] = question10;
-
-    question question11 = 
-    {
-        .category = (uintptr_t)categories[2], .question = "T/F: NOT IN and NOT EXISTS are exactly the same, and return the same query.", .answer = "F", .value = 300, .answered = false
-    };
-    questions[10] = question11;
-
-    question question12 = 
-    {
-        .category = (uintptr_t)categories[2], .question = "T/F: SELECT AVG(prices) FROM store WHERE prices <= 0; will return average price of all free items.", .answer = "T", .value = 400, .answered = false
-    };
-    questions[11] = question12;
-
     
+	strcpy(questions[0].category, "programming");
+	strcpy(questions[0].question, "_______ is a language unrelated to Java");
+	strcpy(questions[0].answer, "javascript");
+	questions[0].value = 100;
+	questions[0].answered = false;
+
+	strcpy(questions[1].category, "programming");
+	strcpy(questions[1].question, "The symbol | is used to ______ input/output");
+	strcpy(questions[1].answer, "pipe");
+	questions[1].value = 200;
+	questions[1].answered = false;
+
+	strcpy(questions[2].category, "programming");
+	strcpy(questions[2].question, "In Assembly STR R2, R3 will ____ contents of R3 into R2");
+	strcpy(questions[2].answer, "store");
+	questions[2].value = 300;
+	questions[2].answered = false;
+
+	strcpy(questions[3].category, "programming");
+	strcpy(questions[3].question, "The __ in each thread is different");
+	strcpy(questions[3].answer, "PC");
+	questions[3].value = 400;
+	questions[3].answered = false;
+
+
+
+
+	strcpy(questions[4].category, "algorithms");
+	strcpy(questions[4].question, "This popular search algorithm is also known as half-interval search");
+	strcpy(questions[4].answer, "binarysearch");
+	questions[4].value = 100;
+	questions[4].answered = false;
+
+	strcpy(questions[5].category, "algorithms");
+	strcpy(questions[5].question, "The worst-case scenario for algorithms are _____ bound");
+	strcpy(questions[5].answer, "lower");
+	questions[5].value = 200;
+	questions[5].answered = false;
+
+	strcpy(questions[6].category, "algorithms");
+	strcpy(questions[6].question, "This common search algorithm doe not always find a path to a node");
+	strcpy(questions[6].answer, "DFS");
+	questions[6].value = 300;
+	questions[6].answered = false;
+
+	strcpy(questions[7].category, "algorithms");
+	strcpy(questions[7].question, "This search algorithm uses both best-first and lowest-cost-first");
+	strcpy(questions[7].answer, "A*");
+	questions[7].value = 400;
+	questions[7].answered = false;
+
+
+
+
+	strcpy(questions[8].category, "database");
+	strcpy(questions[8].question, "Only one semi-colon is needed for an ___ statement");
+	strcpy(questions[8].answer, "SQL");
+	questions[8].value = 100;
+	questions[8].answered = false;
+
+	strcpy(questions[9].category, "database");
+	strcpy(questions[9].question, "This type of key needs to be a primary key in another table");
+	strcpy(questions[9].answer, "foreign");
+	questions[9].value = 200;
+	questions[9].answered = false;
+
+	strcpy(questions[10].category, "database");
+	strcpy(questions[10].question, "Contains the smallest unit of meaningful information is a row/record");
+	strcpy(questions[10].answer, "field");
+	questions[10].value = 300;
+	questions[10].answered = false;
+
+	strcpy(questions[11].category, "database");
+	strcpy(questions[11].question, "The subset of SQL used to select and update the data in a database");
+	strcpy(questions[11].answer, "DML");
+	questions[11].value = 400;
+	questions[11].answered = false;
+
 }
 
 // Displays each of the remaining categories and question dollar values that have not been answered
@@ -129,7 +134,11 @@ void display_categories(void)
 // Displays the question for the category and dollar value
 void display_question(char *category, int value)
 {
-    printf("Category: %s, Value: %d", category, value);
+	for (int i = 0; i < 12; i++) {
+		if ((questions[i].category==category) && (questions[i].value == value)) {
+			printf("Question: %s (%d)\n", questions[i].question, questions[i].value);
+		}
+	}
 }
 
 // Returns true if the answer is correct for the question for that category and dollar value
@@ -152,14 +161,16 @@ bool valid_answer(char *category, int value, char *answer)
 // Returns true if the question has already been answered
 bool already_answered(char *category, int value)
 {
-    // lookup the question and see if it's already been marked as answered
-    for (int i = 0; i < NUM_QUESTIONS; i ++)
-    {
-        bool validC = strcmp (questions[i].category, category);
-        if (validC == true && questions[i].answered == true && value == questions[i].value)
-        {
-            return true;
-        }
-    }
-    return false;
+	bool answered=false;
+	for (int i = 0; i < 12; i++) {
+		if (questions[i].category==category && (questions[i].value == value)) {
+			if (questions[i].answered == true) {
+				answered = true;
+			} else {
+				answered = false;
+			}
+		}
+	}
+	return answered;
 }
+
