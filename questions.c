@@ -16,7 +16,7 @@ void initialize_game(void)
 {
     
 	strcpy(questions[0].category, "programming");
-	strcpy(questions[0].question, "_______ is a language unrelated to Java");
+	strcpy(questions[0].question, "_______ is related to Java as a car is related to a carpet");
 	strcpy(questions[0].answer, "javascript");
 	questions[0].value = 100;
 	questions[0].answered = false;
@@ -82,7 +82,7 @@ void initialize_game(void)
 	questions[9].answered = false;
 
 	strcpy(questions[10].category, "database");
-	strcpy(questions[10].question, "Contains the smallest unit of meaningful information is a row/record");
+	strcpy(questions[10].question, "Contains the smallest unit of meaningful information in a row/record");
 	strcpy(questions[10].answer, "field");
 	questions[10].value = 300;
 	questions[10].answered = false;
@@ -134,11 +134,8 @@ void display_categories(void)
 // Displays the question for the category and dollar value
 void display_question(char *category, int value)
 {
-	for (int i = 0; i < 12; i++) {
-		if ((questions[i].category==category) && (questions[i].value == value)) {
-			printf("Question: %s (%d)\n", questions[i].question, questions[i].value);
-		}
-	}
+	printf("Question: %s (%d)\n", questions[1].question, questions[1].value);
+
 }
 
 // Returns true if the answer is correct for the question for that category and dollar value
