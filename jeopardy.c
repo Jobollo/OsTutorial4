@@ -20,7 +20,7 @@
 
 
 void show_results(player *players){
-    for(int i = 0; i <= 4; i++){
+    for(int i = 0; i < 4; i++){
         printf("Name: %s\tScore:%d\n", players[i].name, players[i].score);
     }
 }
@@ -38,19 +38,25 @@ void tokenize(char *input, char **tokens){
 
 void run_game(char **token, player *players){
     // Execute the game until all questions are answered
-    int questions_remaining = sizeof(questions);
+    int questions_remaining = 12;
     bool correct;
-    char *category;  
+    char category[512];  
     int value;
     char response[BUFFER_LEN] = {0};
-    
-    category = (char *) calloc(BUFFER_LEN, sizeof(char));
+    char dummy1[256];
+    char dummy2[256];
+    char real[256];
+    for (int i=0; i < 4; i++)
+    {
+    	players[i].score = 0;
+    }
+
+    //category = (char *) calloc(BUFFER_LEN, sizeof(char));
     
     //token = (char *) calloc(256, sizeof(char));
 
     char name[20];
     while(questions_remaining > 0){
-        for(int i =0; i < sizeof(players); i++){
             printf("\nEnter name of player answering: ");
 	    scanf("%s", name);
 	    while (1)
@@ -62,7 +68,7 @@ void run_game(char **token, player *players){
 		printf("Invalid player name. Please try again");
 		scanf("%s", name);
 	    }
-	    printf("%s's Turn\nPlease choose from the following questions\n<Type category, then press 'enter', then type value, then press 'enter':\n\n", players[i].name);
+	    printf("%s's Turn\nPlease choose from the following questions\n<Type category, then press 'enter', then type value, then press 'enter':\n\n", name);
             display_categories();
             printf("\n\n");
             scanf("%s", category);
@@ -71,30 +77,33 @@ void run_game(char **token, player *players){
             
             if(already_answered(category, value)==true){
                 printf("Question has already been answered. Please choose another");
-                i--;
             }
             else{
                 display_question(category, value);
-                scanf("%s", response);                                  //Takes response
+                scanf("%s %s %s", dummy1, dummy2, real);                                 //Takes response
                 
-                tokenize(response, token);                               //extracts answer from response
-                correct = valid_answer(category,value,token[2]);
+                //tokenize(response, token);                               //extracts answer from response
+                correct = valid_answer(category,value,&real);
                 if(correct){
                     printf("Correct! You may now choose another question.\n\n");
-                    players[i].score += value;
-                    i--;
+		    for (int i=0; i < 4; i++)
+		    {
+			if (strcmp(players[i].name, name)==0)
+			{
+                    		players[i].score += value;
+			}
+		    }
                 }
                 else{
                     printf("Unfortunately, that is incorrect, or you forgot to say \"What is/Who is\".\n\n");
                 }
                 already_answered(category, value);
                 questions_remaining--;
+		printf("%d\n",questions_remaining);
                 if(questions_remaining<=0){
                     break;
-                }
-            }                
+                }              
         }
-        free(category);
     }
     
     // Display the final results and exit

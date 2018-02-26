@@ -16,7 +16,7 @@ void initialize_game(void)
 {
     
 	strcpy(questions[0].category, "programming");
-	strcpy(questions[0].question, "_______ is related to Java as a car is related to a carpet");
+	strcpy(questions[0].question, "_______ is a language unrelated to Java");
 	strcpy(questions[0].answer, "javascript");
 	questions[0].value = 100;
 	questions[0].answered = false;
@@ -69,25 +69,25 @@ void initialize_game(void)
 
 
 
-	strcpy(questions[8].category, "database");
+	strcpy(questions[8].category, "databases");
 	strcpy(questions[8].question, "Only one semi-colon is needed for an ___ statement");
 	strcpy(questions[8].answer, "SQL");
 	questions[8].value = 100;
 	questions[8].answered = false;
 
-	strcpy(questions[9].category, "database");
+	strcpy(questions[9].category, "databases");
 	strcpy(questions[9].question, "This type of key needs to be a primary key in another table");
 	strcpy(questions[9].answer, "foreign");
 	questions[9].value = 200;
 	questions[9].answered = false;
 
-	strcpy(questions[10].category, "database");
-	strcpy(questions[10].question, "Contains the smallest unit of meaningful information in a row/record");
+	strcpy(questions[10].category, "databases");
+	strcpy(questions[10].question, "Contains the smallest unit of meaningful information is a row/record");
 	strcpy(questions[10].answer, "field");
 	questions[10].value = 300;
 	questions[10].answered = false;
 
-	strcpy(questions[11].category, "database");
+	strcpy(questions[11].category, "databases");
 	strcpy(questions[11].question, "The subset of SQL used to select and update the data in a database");
 	strcpy(questions[11].answer, "DML");
 	questions[11].value = 400;
@@ -118,24 +118,24 @@ void display_categories(void)
 	printf("   %s    |   %s    |   %s   \n", categories[0], categories[1], categories[2]);
 	printf("  _________________________________________________\n");
 
-	printf("      %s         |     %s         |         %s   \n", v[0], v[1], v[2]);
+	printf("      %s         |     %s         |         %s   \n", v[0], v[4], v[8]);
 	printf("  _________________________________________________\n");
 	
-	printf("      %s         |     %s         |         %s   \n", v[3], v[4], v[5]);
+	printf("      %s         |     %s         |         %s   \n", v[1], v[5], v[9]);
 	printf("  _________________________________________________\n");
 	
-	printf("      %s         |     %s         |         %s   \n", v[6], v[7], v[8]);
+	printf("      %s         |     %s         |         %s   \n", v[2], v[6], v[10]);
 	printf("  _________________________________________________\n");
 
-	printf("      %s         |     %s         |         %s   \n", v[9], v[10], v[11]);
+	printf("      %s         |     %s         |         %s   \n", v[3], v[7], v[11]);
 	printf("  _________________________________________________\n");
 }
 
 // Displays the question for the category and dollar value
 void display_question(char *category, int value)
 {
-	for (int i =0; i<12; i++){
-		if((questions[i].category==category)&&(questions[i].value==value)){
+	for (int i = 0; i < 12; i++) {
+		if (strcmp(questions[i].category,category)==0 && questions[i].value == value) {
 			printf("Question: %s (%d)\n", questions[i].question, questions[i].value);
 		}
 	}
@@ -149,13 +149,22 @@ bool valid_answer(char *category, int value, char *answer)
     {
         bool validC = strcmp (questions[i].category, category);
         bool validA = strcmp (questions[i].answer, answer);
-        if (validC == true && value == questions[i].value && validA == true)
+        if (validC == 0 && value == questions[i].value)
         {
-            return true;
+		if (validA == 0)
+		{
+		    	questions[i].answered = true;
+			return true;
+		}
+		else
+		{
+			questions[i].answered = true;
+    			return false;
+		}
         }
+
     }
-   
-    return false;
+
 }
 
 // Returns true if the question has already been answered
@@ -163,7 +172,7 @@ bool already_answered(char *category, int value)
 {
 	bool answered=false;
 	for (int i = 0; i < 12; i++) {
-		if (questions[i].category==category && (questions[i].value == value)) {
+		if (strcmp(questions[i].category,category) == 0 && questions[i].value == value) {
 			if (questions[i].answered == true) {
 				answered = true;
 			} else {
