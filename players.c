@@ -10,18 +10,19 @@
 #include <string.h>
 #include "players.h"
 
+/*
 struct player {
     char name[MAX_LEN];
     int score;
 };
-
+*/
 // Returns true if the player name matches one of the existing players
 bool player_exists(struct player *players, int num_players, char *name)
 {
     for (int i = 0; i < num_players; i ++)
     {
         bool validP = strcmp(players[i].name, name);
-        if (validP == true)
+        if (validP)
         {
             return true;
         }
@@ -38,7 +39,7 @@ void update_score(struct player *players, int num_players, char *name, int score
     for (int i = 0; i < num_players; i ++)
     {
         bool validP = strcmp(players[i].name, name);
-        if (validP == true)
+        if (validP)
         {
             players[i].score = score;
         }
