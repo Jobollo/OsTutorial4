@@ -43,6 +43,9 @@ void run_game(char **token, player *players){
     char *category;  
     int value;
     char response[BUFFER_LEN] = {0};
+    char dummy1[256];
+    char dummy2[256];
+    char real[256];
     
     category = (char *) calloc(BUFFER_LEN, sizeof(char));
     
@@ -75,10 +78,14 @@ void run_game(char **token, player *players){
             }
             else{
                 display_question(category, value);
-                scanf("%s", response);                                  //Takes response
-                
-                tokenize(response, token);                               //extracts answer from response
-                correct = valid_answer(category,value,token[2]);
+                scanf("%s %s %s", dummy1, dummy2, real);                                  //Takes response
+                printf("%s\n", response);
+                //strcpy(dummy1, strtok(response, " ")); // first string
+                //strcpy(dummy2, strtok(NULL, " ")); // second string
+                //strcpy(real, strtok(NULL, " "));
+                //tokenize(response, token);                               //extracts answer from response
+                //printf(token[2]);
+                correct = valid_answer(category,value, &real);
                 if(correct){
                     printf("Correct! You may now choose another question.\n\n");
                     players[i].score += value;

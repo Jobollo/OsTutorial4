@@ -134,18 +134,31 @@ void display_categories(void)
 // Displays the question for the category and dollar value
 void display_question(char *category, int value)
 {
-	printf("Question: %s (%d)\n", questions[1].question, questions[1].value);
+	// Look into string comparison functions
+    for (int i = 0; i < NUM_QUESTIONS; i ++)
+    {
+        bool validC = strcmp (questions[i].category, category);
+        //bool validA = strcmp (questions[i].answer, answer);
+        if (validC == true && value == questions[i].value)
+        {
+			printf("Question: %s (%d)\n", questions[i].question, questions[i].value);
+        }
+    }
 
 }
 
 // Returns true if the answer is correct for the question for that category and dollar value
-bool valid_answer(char *category, int value, char *answer)
+bool valid_answer(char *category, int value, char  *answer)
 {
+	//printf("Printing from valid_answer!\n");
     // Look into string comparison functions
+	char answerC[256] = "";
+	//printf(&answer);
     for (int i = 0; i < NUM_QUESTIONS; i ++)
     {
         bool validC = strcmp (questions[i].category, category);
-        bool validA = strcmp (questions[i].answer, answer);
+		strcpy(answerC, answer);
+        bool validA = strcmp (questions[i].answer, answerC);
         if (validC == true && value == questions[i].value && validA == true)
         {
             return true;
